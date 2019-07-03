@@ -16,7 +16,8 @@ myPlayer = {
   x				: null,
   y				: 0,
   x_velocity	: 0,
-  y_velocity	: 0
+  y_velocity	: 0,
+  jumping		: true
 
 };
 // set x property of myPlayer to center of the canvas
@@ -53,6 +54,11 @@ controller = {
 
 loop = function() {
 	
+	if (controller.up && myPlayer.jumping == false) {
+		myPlayer.y_velocity -= 25;
+		myPlayer.jumping = true;
+	}
+
 	if (controller.left) {
 		myPlayer.x_velocity -= 0.5;
 	}
@@ -71,26 +77,21 @@ loop = function() {
 	
 	// Prevent myPlayer from falling beyond the floor
 	if (myPlayer.y > 180 - 16 - 32) {
-
 		myPlayer.jumping = false;
 		myPlayer.y = 180 - 16 - 32;
 		myPlayer.y_velocity = 0;
-
 	}
 
 	// Prevent myPlayer from going off screen on the left side of the canvas
 	if (myPlayer.x < 0) {
-
 		myPlayer.x = 0;
 		myPlayer.x_velocity = 0;
-
 	}
+
 	// Prevent myPlayer from going off screen on the right side of the canvas
 	else if (myPlayer.x > 320-myPlayer.width) {
-
 		myPlayer.x = 320-myPlayer.width;
 		myPlayer.x_velocity = 0;
-
 	}
 
 	// draw background using fillRect
@@ -104,7 +105,7 @@ loop = function() {
 	context.fillStyle = "#ff0000";
 	context.rect(myPlayer.x, myPlayer.y, myPlayer.width, myPlayer.height);
 	context.fill();
-	
+
 	// draw floor
 	context.beginPath();
 	context.strokeStyle = "#202830";
