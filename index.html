@@ -1,0 +1,84 @@
+
+<!doctype html>
+<html>
+    <head>
+        <title>Running Jumping Box</title>
+
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <style type="text/css">
+        
+            body {
+                color: #efefef;
+                background-color: #f0f0f2;
+                margin: 0;
+                padding: 0;
+                font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            }
+
+            div.center-align  {
+                text-align: center;
+            }
+            
+            iframe {
+                margin-top: 5vh;
+                width: 90vw;
+                height: 90vh;
+            }    
+
+            ol {
+                position: absolute;
+                top: 100px;
+                left: 7vw;
+            }
+
+            a:visited, a:active {
+                color: yellow;
+            }
+
+            a:link {
+                color: #efefef;
+            }
+
+        </style>   
+
+    </head>
+
+    <body>
+        
+        <ol>
+            <li><a href="#" onclick="go('01-HTML-and-CSS/index.html')">HTML and CSS</a></li>
+            <li><a href="#" onclick="go('02-Game-Loop/index.html')">Game Loop</a></li>
+            <li><a href="javascript:void(0)" onclick="go('03-Draw-on-Canvas/index.html')">Draw on Canvas</a></li>
+            <li><a href="javascript:void(0)" onclick="go('04-Character-Movement/index.html')">Character Movement</a></li>
+            <li><a href="javascript:void(0)" onclick="go('05-Gravity-and-Friction/index.html')">Gravity and Friction</a></li>
+            <li><a href="javascript:void(0)" onclick="go('06-Restrict-Movement/index.html')">Restrict Movement</a></li>
+            <li><a href="javascript:void(0)" onclick="go('07-Make-Character-Jump/index.html')">Make Character Jump</a></li>
+
+        </ol>
+        
+        <div class="center-align">
+            <iframe id="iFramePatients" src="01-HTML-and-CSS/index.html"></iframe>
+        </div>
+
+        <script>
+
+            function go(loc) {
+
+                // change the source of the iframe
+                // this allows the viewer to view different result of each commit
+                document.getElementById('iFramePatients').src = loc;
+
+                // after selecting from the ordered list,
+                // pressing arrow key wont work because 
+                // the focus needs to be on the iframe for it it receive the input
+                document.getElementById("iFramePatients").focus();
+
+            }
+
+        </script>
+
+    </body>
+</html>
